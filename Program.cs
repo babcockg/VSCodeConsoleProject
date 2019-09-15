@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace C__Console_App
+namespace VSCodeConsoleApp
 {
     class Program
     {
