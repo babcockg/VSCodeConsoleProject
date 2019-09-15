@@ -9,7 +9,7 @@ namespace VSCodeConsoleApp
 
         public string spc ( int width )
         {
-            return new string ( '.' , width*2 );
+            return new string ( ' '  , width*2 );
         }
 
         public void EnumerateDirectory(DirectoryInfo dir)
@@ -30,9 +30,13 @@ namespace VSCodeConsoleApp
                     EnumerateDirectory(subDirectory);
                 }
             }
-            catch 
+            catch ( Exception exc )
             {
-
+                while ( exc != null )
+                {
+                    System.Console.WriteLine($"{exc.GetType().Name} : {exc.Message}");
+                    exc = exc.InnerException;
+                }
             }
             depth --;
         }
