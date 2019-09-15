@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace C__Console_App
+namespace VSCodeConsoleApp
 {
     class Program
     {
@@ -9,7 +9,7 @@ namespace C__Console_App
 
         public string spc ( int width )
         {
-            return new string ( '.' , width*2 );
+            return new string ( ' '  , width*2 );
         }
 
         public void EnumerateDirectory(DirectoryInfo dir)
@@ -30,9 +30,13 @@ namespace C__Console_App
                     EnumerateDirectory(subDirectory);
                 }
             }
-            catch 
+            catch ( Exception exc )
             {
-
+                while ( exc != null )
+                {
+                    System.Console.WriteLine($"{exc.GetType().Name} : {exc.Message}");
+                    exc = exc.InnerException;
+                }
             }
             depth --;
         }
